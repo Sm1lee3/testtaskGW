@@ -1,0 +1,23 @@
+{% extends "menu/index.html" %}{% block content %}
+{% load i18n %}
+{% load static %}
+
+<h1>{% trans "Вітаємо на тестовому завданні" %} <form action="{% url 'set_language' %}" method="post">
+    {% csrf_token %}
+    <button type="submit" name="language" value="uk">Укр</button>
+    <button type="submit" name="language" value="en">Eng</button>
+</form></h1>
+<p>{% trans 'Current language:' %}{{ request.LANGUAGE_CODE }}</p>
+<h2>{% trans "Ліст отриманий з АРІ" %}</h2><ol>
+    {% for item in itemsapi %}
+        {% include 'menu/listApi.html' with element=item %}
+    {% endfor %}
+</ol>
+<h2>{% trans "Ліст отриманий з бази даних локально" %}</h2>
+
+<ol>
+    {% for el in items %}
+        {% include 'menu/list.html' with element=el %}
+    {% endfor %}
+</ol>
+{% endblock %}

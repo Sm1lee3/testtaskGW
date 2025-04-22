@@ -1,0 +1,10 @@
+<li>
+    {{ element.name }}
+    {% if element.children %}
+        <ol>
+            {% for child in element.children.all %}
+                {% include 'menu/list.html' with element=child %}
+            {% endfor %}
+        </ol>
+    {% endif %}
+</li>

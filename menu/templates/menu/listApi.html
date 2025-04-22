@@ -1,0 +1,15 @@
+<li>
+    {% if request.LANGUAGE_CODE == 'en' %}
+    {{ element.name_en }}
+{% elif request.LANGUAGE_CODE == 'uk' %}
+    {{ element.name_uk }}
+{% endif %}
+    
+    {% if element.children %}
+        <ol>
+            {% for child in element.children %}
+                {% include 'menu/listApi.html' with element=child %}
+            {% endfor %}
+        </ol>
+    {% endif %}
+</li>
