@@ -5,7 +5,7 @@ from rest_framework import status
 from menu.models import Menu
 from .serializers import MenuSerializer
 from rest_framework.parsers import JSONParser
-
+#В'юшки для API меню
 @api_view(['GET'])
 def getData(request):
     items = Menu.objects.all()
@@ -18,7 +18,7 @@ def getParent(request):
     serializer = MenuSerializer(items, many=True)
     return Response(serializer.data)
 
-
+#В'юшка для обробки помилок
 def error_404(request, exception):
     responce_data = {
         'status': 404,

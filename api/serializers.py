@@ -1,13 +1,12 @@
 from rest_framework import serializers
 from menu.models import Menu
-
+#Перетворення моделі в JSON
 class MenuSerializer(serializers.ModelSerializer):
     children = serializers.SerializerMethodField()
 
     class Meta:
         model = Menu
         fields = '__all__'
-# Рекурсивне отримання дочірніх елементів
 
 
 

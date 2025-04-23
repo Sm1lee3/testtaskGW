@@ -4,6 +4,7 @@ from .models import Menu
 from api.serializers import MenuSerializer 
 from .forms import MenuForm
 import requests
+#Головна сторінка
 def index(request):
     # response = requests.get('http://127.0.0.1:8000/api/parent')
     # itemsapi = response.json()
@@ -14,6 +15,7 @@ def index(request):
     return render(request, 'menu/alllists.html', {'items': items,
         'itemsapi': itemsapi,})  
 
+#Створення пунктів меню
 def createmenu(request):
     if request.method == 'POST':
         form = MenuForm(request.POST)
@@ -23,7 +25,7 @@ def createmenu(request):
     else:
         form = MenuForm()
     return render(request, 'menu/createmenu.html', {'form': form})
-
+#Редагування пунктів меню
 def updatemenu(request, pk):
     menu_item = get_object_or_404(Menu, pk=pk)
 
@@ -36,7 +38,7 @@ def updatemenu(request, pk):
         form = MenuForm(instance=menu_item)
 
     return render(request, 'menu/editmenu.html', {'form': form})
-
+#Видалення пунктів меню
 def delete(request, pk):
     menu_item = get_object_or_404(Menu, pk=pk)
     if request.method == 'POST':
@@ -44,6 +46,9 @@ def delete(request, pk):
         return redirect('index')
     return render(request, 'menu/deletemenu.html', {'menu_item': menu_item})
 
+
+
+#Кастомна обробка помилок
 def custom_500(request):
     # if request.path.startswith('/api/'):
     if '/api/' in request.path:
@@ -55,5 +60,5 @@ def custom_404(request, exception):
         return JsonResponse({'status': 404, 'message': 'Resource not found'}, status=404)
     return render(request, '404err.html', status=404)
 
-
+#Повернення кастомної помилки 500
 def error5(request): raise Exception('This is a test error')

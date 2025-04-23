@@ -1,6 +1,6 @@
 from django.forms import ModelForm, TextInput, Select
 from .models import Menu
-
+#Форма для маніпуляцій з пунктами меню
 class MenuForm(ModelForm):
     class Meta:
         model = Menu
