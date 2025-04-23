@@ -1,0 +1,10 @@
+{% extends "menu/index.html" %}{% block content %}
+
+<h2>Видалити пункт меню?</h2>
+
+<form method="post">
+    {% csrf_token %}
+    <button type="submit">Так, видалити</button>
+    <button><a href="{% url 'index' %}">Скасувати</a></button>  <!-- заміни на свій маршрут назад -->
+</form>
+{% endblock %}

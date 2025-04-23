@@ -1,5 +1,8 @@
 <li>
-    {{ element.name }}
+    {{ element.name }} 
+    <button><a href="{% url 'update' element.id %}" >Редагувати</button>
+    <button><a href="{% url 'delete' element.id %}" >Видалити</button>
+    
     {% if element.children %}
         <ol>
             {% for child in element.children.all %}

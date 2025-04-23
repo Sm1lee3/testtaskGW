@@ -10,7 +10,7 @@ urlpatterns = [
 
 
 urlpatterns += i18n_patterns(
-     path('menu/', include('menu.urls')),
+     path('', include('menu.urls')),
      path('api/', include('api.urls')),
      
 )

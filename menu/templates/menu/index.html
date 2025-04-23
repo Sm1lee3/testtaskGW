@@ -9,7 +9,18 @@
     <title>Тестове </title>
 </head>
 <body>
-    
+    <form action="{% url 'set_language' %}" method="post">
+        {% csrf_token %}
+        <button type="submit" name="language" value="uk">Укр</button>
+        <button type="submit" name="language" value="en">Eng</button>
+    </form>
+    <button type="submit">
+    <a href="{% url 'create' %}" type='button'>Створити пункт </a>
+    </button>
+    <button type="submit">
+    <a href="{% url 'index' %}" type='button'>Списки </a>
+    </button>
+
     {% block content %}{% endblock %}
 </body>
 </html>

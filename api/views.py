@@ -4,6 +4,7 @@ from django.http import JsonResponse
 from rest_framework import status
 from menu.models import Menu
 from .serializers import MenuSerializer
+from rest_framework.parsers import JSONParser
 
 @api_view(['GET'])
 def getData(request):
@@ -16,6 +17,7 @@ def getParent(request):
     items = Menu.objects.filter(parent=None)
     serializer = MenuSerializer(items, many=True)
     return Response(serializer.data)
+
 
 def error_404(request, exception):
     responce_data = {
