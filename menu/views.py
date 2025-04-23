@@ -3,7 +3,6 @@ from django.http import JsonResponse
 from .models import Menu
 from api.serializers import MenuSerializer 
 import requests
-# Create your views here.
 def index(request):
     # response = requests.get('http://127.0.0.1:8000/api/parent')
     # itemsapi = response.json()

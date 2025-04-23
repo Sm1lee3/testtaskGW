@@ -3,4 +3,4 @@ from .models import Menu
 
 @register(Menu)
 class MenuTranslationOptions(TranslationOptions):
-    fields = ('name',)#тільки нейм бо парент ми не відображаєм
+    fields = ('name',)
